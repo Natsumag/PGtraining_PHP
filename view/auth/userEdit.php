@@ -10,24 +10,24 @@
 
 try
 {
+	$no = $_GET['no'];
 
-$no = $_GET['no'];
+	$dsn = 'mysql:dbname=blogCMS;host=localhost;charset=utf8';
+	$user = 'root';
+	$password = '';
+	$dbh = new PDO($dsn,$user,$password);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$dsn = 'mysql:dbname = blogCMS; host = localhost; charset = utf8';
-$user = 'root';
-$password = '';
-$dbh = new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = 'SELECT username,email FROM users WHERE no = ?';
+	$stmt = $dbh->prepare($sql);
+	$data[] = $no;
+	var_dump($data);
+	$stmt->execute($data);
+	$rec = $stmt->fetch(PDO::FETCH_ASSOC);
+	$username = $rec['username'];
+	$email = $rec['email'];
 
-$sql = 'SELECT username,email FROM users WHERE no = ?';
-$stmt = $dbh->prepare($sql);
-$data[] = $no;
-$stmt->execute($data);
-$rec = $stmt->fetch(PDO::FETCH_ASSOC);
-$username = $rec['username'];
-$email = $rec['email'];
-
-$dbh = null;
+	$dbh = null;
 
 }
 catch(Exception $e)

@@ -13,7 +13,7 @@ try
 
 $no = $_GET['no'];
 
-$dsn = 'mysql:dbname = blogCMS; host = localhost; charset = utf8';
+$dsn = 'mysql:dbname=blogCMS;host=localhost;charset=utf8';
 $user = 'root';
 $password = '';
 $dbh = new PDO($dsn,$user,$password);
@@ -38,14 +38,11 @@ catch(Exception $e)
 
 ?>
 
-管理者修正<br>
+管理者削除<br>
 <hr>
 No:<br>
-<?php print $no; ?>
-<br>
-名前：<br>
-<?php print $username ?>
-を削除します<br>
+<?php print $no; ?><br>
+名前：<?php print $username ?>を削除します<br>
 <form method = "post" action = "userDeleteCheck.php">
 <input type = "hidden"name = "no" value = "<?php print $no; ?>">
 

@@ -51,7 +51,7 @@ if($username == '' || $pass == '' || $pass !== $pass2)
 }
 else
 {
-	$pass=md5($pass);
+	$pass = md5($pass);
 	print '<form method = "post" action = "userEditDone.php">';
 	print '<input type = "hidden" name = "no" value = "'.$no.'">';
 	print '<input type = "hidden" name = "username" value = "'.$username.'">';

@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==false)
+if(isset($_SESSION['login']) == false)
 {
   print 'ログインされていません。<br>';
   print '<a href = "../auth/login.html">ログイン画面へ</a>';
@@ -17,11 +17,11 @@ else
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset = "UTF-8">
-  <title>管理画面</title>
+<meta charset = "UTF-8">
+<title>管理画面</title>
 </head>
-<body>
 
+<body>
 メニュー<br>
 <br>
 <a href = "../staff/staff_list.php"> ユーザー管理 </a><br>
@@ -30,14 +30,13 @@ else
 <a href = "../auth/userLogout.php"> ログアウト </a><br>
 <hr>
 <?php
-
 try
 {
   $dsn = 'mysql:dbname=blogCMS;host=localhost;charset=utf8';
   $user = 'root';
   $password = '';
-  $dbh = new PDO($dsn,$user,$password);
-  $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+  $dbh = new PDO($dsn, $user, $password);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   $sql = 'SELECT no, username, email FROM users WHERE 1';
   $stmt = $dbh -> prepare($sql);

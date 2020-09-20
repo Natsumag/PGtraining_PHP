@@ -16,21 +16,21 @@ try
   $email=$post['email'];
   $pass=$pass['pass'];
 
-$dsn = 'mysql:dbname = blogCMS; host = localhost; charset = utf8';
-$user = 'root';
-$password = '';
-$dbh = new PDO($dsn,$user,$password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+  $dsn = 'mysql:dbname=blogCMS;host=localhost;charset=utf8';
+  $user = 'root';
+  $password = '';
+  $dbh = new PDO($dsn,$user,$password);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-$sql = 'UPDATE users SET username = ?,email = ?, pass = ? WHERE no = ?';
-$stmt = $dbh->prepare($sql);
-$data[] = $username;
-$data[] = $email;
-$data[] = $pass;
-$data[] = $no;
-$stmt->execute($data);
+  $sql = 'UPDATE users SET username = ?,email = ?, pass = ? WHERE no = ?';
+  $stmt = $dbh->prepare($sql);
+  $data[] = $username;
+  $data[] = $email;
+  $data[] = $pass;
+  $data[] = $no;
+  $stmt->execute($data);
 
-$dbh=null;
+  $dbh=null;
 
 }
 catch (Exception $e)
